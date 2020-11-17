@@ -1,3 +1,5 @@
+package util;
+
 public class Examinator {
 
     private Element current;

@@ -1,3 +1,5 @@
+package util;
+
 /**
  *pile générique capable de stocker un nombre quelconque d'objets
  */
