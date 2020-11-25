@@ -4,15 +4,15 @@ public class Examinator {
 
     private Element current;
 
-    public Examinator(Element head){
-        this.current = head;
+    public Examinator(Element head) {
+        current = head;
     }
 
-    public boolean possedeSuivant(){
+    public boolean possedeSuivant() {
         return current != null;
     }
 
-    public Object suivant(){
+    public Object suivant() {
         Object data = current.data;
         current = current.next;
         return data;

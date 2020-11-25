@@ -1,82 +1,73 @@
 package hanoi;
 
-import util.*;
+import util.Pile;
 
+/**
+ *
+ */
 public class Hanoi {
-    private Pile[] piles = new Pile[3];
-    private int disks;
+    private final Pile[] piles = new Pile[3];
+    private final int disks;
     private HanoiDisplayer displayer;
-    private int states = 0;
+    private int turns = 0;
     private boolean isFinished = false;
 
     public Hanoi(int disks) {
-        this.disks = disks;
-        init();
+        this(disks, new HanoiDisplayer());
     }
 
     public Hanoi(int disks, HanoiDisplayer displayer) {
-        this(disks);
+        this.disks = disks;
+        for (int i = 0; i < piles.length; ++i) {
+            piles[i] = new Pile();
+        }
+        for (int i = 0; i < disks; ++i) {
+            piles[0].empiler(disks - i);
+        }
         this.displayer = displayer;
     }
 
-    private void init(){
-        for(int i = 0; i < piles.length; ++i) {
-            piles[i] = new Pile();
-        }
-        for(int i = 0; i < disks; ++i) {
-            piles[0].empiler(i);
-        }
-        states = 0;
-        isFinished = false;
-    }
-    public void getEtat(){
-        System.out.println("");
-        for(Pile p : piles) {
-            System.out.println(p);
+    public void getEtat() {
+        System.out.println("-- Turn : " + turns);
+        int i = 1;
+        for (Pile p : piles) {
+            System.out.println(i++ + ": " + p);
         }
     }
 
-    public boolean finished(){
-        //TODo
-
+    public boolean finished() {
         return isFinished;
     }
 
-    public int[][] status(){
-        int[][] t = new int[piles.length][disks];
-        for(int i = 0; i < piles.length; ++i){
+    public int[][] status() {
+        int[][] t = new int[piles.length][];
+        for (int i = 0; i < piles.length; ++i) {
             Object[] p = piles[i].tab();
-            for(int j = 0; j < disks; ++j){
-                t[i][j] = (int) p[j];
+            t[i] = new int[p.length];
+            for (int j = 0; j < p.length; ++j) {
+                t[i][j] = (int) p[p.length - 1 - j];
             }
         }
-
         return t;
     }
 
-    public int turn(){
-        return states;
+    public int turn() {
+        return turns;
     }
 
-    public void solve(){
-        displayer.display(this);
-        run(disks,piles[0],piles[1],piles[2]);
+    public void solve() {
+        if (displayer != null) displayer.display(this);
+        run(disks, piles[0], piles[1], piles[2]);
         isFinished = true;
     }
+
     private void run(int n, Pile orig, Pile inter, Pile dest) {
-
-        if(n > 0){
-            run(n-1,orig,dest,inter);
+        if (n > 0) {
+            run(n - 1, orig, dest, inter);
             dest.empiler(orig.desempiler());
-            ++states;
-            displayer.display(this);
-            run(n-1,inter, orig, dest);
+            ++turns;
+            if (displayer != null) displayer.display(this);
+            run(n - 1, inter, orig, dest);
         }
-    }
-
-    public static void main(String[] args) {
-        //new hanoi.gui.JHanoi();
-        Hanoi tour = new Hanoi(15, new HanoiDisplayer());
-        tour.solve();
     }
 }

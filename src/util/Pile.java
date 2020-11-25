@@ -1,16 +1,11 @@
 package util;
 
 /**
- *pile générique capable de stocker un nombre quelconque d'objets
+ * pile générique capable de stocker un nombre quelconque d'objets
  */
 public class Pile {
-
     private Element head;
     private int size = 0;
-
-    public Pile() {
-
-    }
 
     public boolean isEmpty() {
         return head == null;
@@ -21,22 +16,19 @@ public class Pile {
     }
 
     public void empiler(Object o) {
-        if (isEmpty()) {
-            head = new Element(o, null);
-        } else {
-            head = new Element(o, head);
-        }
+        head = new Element(o, isEmpty() ? null : head);
         ++size;
     }
 
-    public Object desempiler(){
+    public Object desempiler() {
+        if (isEmpty()) return null;
         Object data = head.data;
         head = head.next;
         --size;
         return data;
     }
 
-    public Object[] tab(){
+    public Object[] tab() {
         Object[] t = new Object[size];
 
         Examinator ex = examinator();
@@ -56,7 +48,7 @@ public class Pile {
             txt.append("<").append(ex.suivant()).append("> ");
         }
 
-        return txt+"]";
+        return txt + "]";
     }
 
     public Examinator examinator() {

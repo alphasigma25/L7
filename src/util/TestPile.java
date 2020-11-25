@@ -17,7 +17,7 @@ public class TestPile {
         System.out.println(p);
 
         for (Object value : p.tab()) {
-            System.out.println("v: "+value);
+            System.out.println("v: " + value);
         }
 
     }
