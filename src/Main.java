@@ -3,7 +3,9 @@ import hanoi.gui.JHanoi;
 
 /**
  * Programme principal
- * programme de test pour la classe Hanoi
+ * permet de résoudre un problème de tour de hanoi de manière graphique en utilisant soit
+ * une interface graphique
+ * la console
  */
 public class Main {
     public static void main(String[] args) {
