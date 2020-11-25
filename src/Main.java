@@ -3,6 +3,7 @@ import hanoi.gui.JHanoi;
 
 /**
  * Programme principal
+ * programme de test pour la classe Hanoi
  */
 public class Main {
     public static void main(String[] args) {

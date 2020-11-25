@@ -1,5 +1,8 @@
 package util;
 
+/**
+ * Programme de test pour les piles
+ */
 public class TestPile {
     public static void main(String[] args) {
         Pile p = new Pile();
