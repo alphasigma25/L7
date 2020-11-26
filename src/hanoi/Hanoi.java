@@ -3,7 +3,7 @@ package hanoi;
 import util.Pile;
 
 /**
- * classe implémentant la résolution d'un problème de tour de Hanoi
+ * classe implémentant la résolution d'un problème de tours de Hanoi
  */
 public class Hanoi {
     private final Pile[] piles = new Pile[3];
@@ -13,6 +13,9 @@ public class Hanoi {
     private boolean isFinished = false;
 
     /**
+     * construit des tours de Hanoi avec le nombre de disque spécifié,
+     * fournit par défaut un affichage à la console avec HanoiDisplayer
+     *
      * @param disks nombre de disques à placer
      */
     public Hanoi(int disks) {
@@ -20,6 +23,7 @@ public class Hanoi {
     }
 
     /**
+     * construit des tours de Hanoi avec le nombre de disque et un HanoiDisplayer spécifiés
      * @param disks     nombre de disques à placer
      * @param displayer affichage
      */
@@ -35,7 +39,7 @@ public class Hanoi {
     }
 
     /**
-     *
+     * affiche à la console l'état courant de la résolution du problème de tours de Hanoi
      */
     public void getEtat() {
         System.out.println("-- Turn : " + turns);
@@ -46,6 +50,7 @@ public class Hanoi {
     }
 
     /**
+     * permet de savoir si la résolution du problème est finie
      * @return si on a fini le transfer des disques
      */
     public boolean finished() {
@@ -53,7 +58,9 @@ public class Hanoi {
     }
 
     /**
-     * @return tableau contenant l'état actuel des piles avec les disques placés dessus
+     * renseigne sur l'état courant des 3 tours (nombre de disques sur chaque pile)
+     *
+     * @return tableau contenant l'état actuel des piles, le tableau n'est pas forcément carré
      */
     public int[][] status() {
         int[][] t = new int[piles.length][];
@@ -68,6 +75,8 @@ public class Hanoi {
     }
 
     /**
+     * renseigne sur le nombre d'itérations effectuées
+     *
      * @return le nombre d'itérations effectuées
      */
     public int turn() {
@@ -75,7 +84,7 @@ public class Hanoi {
     }
 
     /**
-     * résoud le problème de transfer des disques
+     * résoud le problème de transfer des disques de la première pile à la dernière
      */
     public void solve() {
         if (displayer != null) displayer.display(this);
@@ -84,6 +93,8 @@ public class Hanoi {
     }
 
     /**
+     * méthode récursive de résolution du problème de tours de Hanoi
+     * complexité : O(n^2)
      *
      * @param n     nombre de d'itérations restantes / de disques à traiter
      * @param orig  pile de départ

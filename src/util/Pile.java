@@ -8,7 +8,7 @@ public class Pile {
     private int size = 0;
 
     /**
-     * @return si la pile est vide
+     * @return vrai si la pile est vide, faux sinon
      */
     public boolean isEmpty() {
         return head == null;
@@ -23,7 +23,6 @@ public class Pile {
 
     /**
      * empile un objet o sur la pile
-     *
      * @param o objet à empiler
      */
     public void empiler(Object o) {
@@ -33,7 +32,6 @@ public class Pile {
 
     /**
      * désempile l'objet au sommet de la pile
-     *
      * @return l'objet au sommet de la pile
      */
     public Object desempiler() {
@@ -75,7 +73,6 @@ public class Pile {
 
     /**
      * itérateur sur la pile
-     *
      * @return un itérateur sur la pile
      */
     public Examinator examinator() {

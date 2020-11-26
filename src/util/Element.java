@@ -8,8 +8,9 @@ public class Element {
     Element next;
 
     /**
+     * Construit un élément à partir d'un objet et de son élément suivant
      * @param data objet à stoquer dans l'élément
-     * @param next élément suivant
+     * @param next élément suivant (peut être null)
      */
     public Element(Object data, Element next) {
         this.data = data;

@@ -8,6 +8,7 @@ public class Examinator {
     private Element current;
 
     /**
+     * Construit un itérateur depuis un élément donné
      * @param head premier élément à examiner
      */
     public Examinator(Element head) {
@@ -15,7 +16,7 @@ public class Examinator {
     }
 
     /**
-     * @return s'il existe un élément suivant
+     * @return vrai s'il existe un élément suivant, faux sinon
      */
     public boolean possedeSuivant() {
         return current != null;
